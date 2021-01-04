@@ -1,13 +1,19 @@
-import logo from '../assets/images/logo.svg';
-import '../styles/App.css';
+import React, { useState } from "react";
 import TopBar from "./TopBar";
 
 function App() {
-  return (
-    <div className="App">
-      <TopBar />
-    </div>
-  );
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
+
+    const logout = () => {
+        setIsLoggedIn( false);
+    }
+
+    return (
+        <div className="App">
+          <TopBar isLoggedIn={isLoggedIn}
+                    handleLogout={logout}/>
+        </div>
+    );
 }
 
 export default App;
