@@ -1,13 +1,38 @@
 import React from 'react';
 
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { BASE_URL } from "../constants";
+
 
 function Login(props) {
+    const { handleLoggedIn } = props;
 
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
+        const { username, password } = values;
+        // get data from server
+
+        const opt = {
+            method:"POST",
+            url: `${BASE_URL}/signin`,
+            data:{
+                username: username,
+                password: password
+            },
+            headers:{"Content-Type": "application/json"}
+        }
+
+        axios(opt)
+            .then( res => {
+                const { data } = res; // get token
+                handleLoggedIn(data)
+            })
+            .catch( e => {
+                message.info(`Login failed ${e.message}`)
+            })
     };
 
     return (
