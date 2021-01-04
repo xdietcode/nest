@@ -1,0 +1,23 @@
+.App-header {
+    background-color: rgb(255, 153, 51);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* font-size: calc(10px + 2vmin); */
+    color: white;
+}
+
+.App-logo {
+    height: 45px;
+    pointer-events: none;
+}
+
+.App-title {
+    font-weight: bold;
+    flex:1;
+    text-align: start;
+    margin-left: 6px;
+    color: beige;
+    font-size: 30px;
+}
