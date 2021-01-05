@@ -1,5 +1,7 @@
 import React from 'react';
-import { Form, Button, Input } from 'antd';
+import { Form, Button, Input, message } from 'antd';
+import axios from 'axios';
+import { BASE_URL } from "../constants";
 
 const formItemLayout = {
     labelCol: {
@@ -25,14 +27,43 @@ const tailFormItemLayout = {
 };
 
 function Register(props) {
+
+    const [form] = Form.useForm();
+
     const onFinish = (values) => {
         console.log('Received values of form: ', values);
+        const { username, password } = values;
+
+        const opt = {
+            method: "POST",
+            url: `${BASE_URL}/signup`,
+            data: {
+                username: username,
+                password: password
+            },
+            headers: {"content-type": "application/json"}
+        }
+
+        axios(opt)
+            .then( res => {
+                if (res.status === 200) {
+                    message.success(`Successfully Registered!`)
+                    // redirect to login
+                    props.history.push("/login")
+
+                }
+
+            })
+            .catch( e => {
+                message.error(`Registration failed: ${e.message}`);
+            })
     };
-    const [form] = Form.useForm();
+
     return (
         <Form
             {...formItemLayout}
             form={form}
+            className="register"
             name="register"
             onFinish={onFinish}
             scrollToFirstError
@@ -42,13 +73,9 @@ function Register(props) {
                 label="Username"
                 rules={[
                     {
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
-                    },
-                    {
                         required: true,
-                        message: 'Please input your E-mail!',
-                    },
+                        message: 'Please input your username!',
+                    }
                 ]}
             >
                 <Input />
@@ -83,8 +110,8 @@ function Register(props) {
                             if (!value || getFieldValue('password') === value) {
                                 return Promise.resolve();
                             }
-                            return Promise.reject('The two passwords that you entered do not match!');
-                        },
+                            return Promise.reject('Passwords not match!');
+                        }
                     }),
                 ]}
             >
@@ -92,7 +119,9 @@ function Register(props) {
             </Form.Item>
 
             <Form.Item {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary"
+                        htmlType="submit"
+                        className="register-btn">
                     Register
                 </Button>
             </Form.Item>
