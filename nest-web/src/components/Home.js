@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import {Tabs, message} from 'antd';
 import {BASE_URL, SEARCH_KEY, TOKEN_KEY} from "../constants";
 import axios from 'axios';
+import PhotoGallery from "./PhotoGallery";
 
 
 function Home(props) {
@@ -16,45 +17,45 @@ function Home(props) {
         type: SEARCH_KEY.all,
         keyword: ""
     })
+    // DidMount()
+    useEffect(() => {
+        const { type, keyword } = searchOption;
+        fetchPost(searchOption);
+        console.log("In effect", searchOption);
+    }, [searchOption]);
 
-    // useEffect( () => {
-    //     fetchPosts(searchOption)
-    // }, [searchOption]);
+    const fetchPost = (option) => {
+        const { type, keyword } = option;
+        let url = "";
 
+        if (type === SEARCH_KEY.all) {
+            url = `${BASE_URL}/search`;
+        } else if (type === SEARCH_KEY.user) {
+            url = `${BASE_URL}/search?user=${keyword}`;
+        } else {
+            url = `${BASE_URL}/search?keywords=${keyword}`;
+        }
 
-    const fetchPost = option => {
-       const { type, keyword } = option;
-       let url = '';
+        const opt = {
+            method: "GET",
+            url: url,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY)}`
+            }
+        };
 
-       if (type === SEARCH_KEY.all) {
-           url = `${BASE_URL}/search`
-       } else if (type === SEARCH_KEY.keyword) {
-           url = `${BASE_URL}/search?keywords=${keyword}`
-       } else {
-           url = `${BASE_URL}/search?user=${keyword}`
-       }
-
-       const opt = {
-           method: "GET",
-           url: url,
-           headers: {
-               // validate aurhotization from server
-               Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY)}`
-           }
-       }
-
-       axios(opt)
-           .then( res => {
-               if (res.stats === 200) {
-                   console.log(res.data)
-                   setPost(res.data) // update post status when received data
-               }
-           })
-           .catch( err => {
-               console.log("Error", err)
-               message.error("Error occurred")
-           })
-    }
+        axios(opt)
+            .then((res) => {
+                if (res.status === 200) {
+                    console.log(res.data);
+                    setPost(res.data);
+                }
+            })
+            .catch((err) => {
+                message.error("Fetch posts failed!");
+                console.log("fetch posts failed: ", err.message);
+            });
+    };
 
     const renderPost = type => {
         // case1: post is empty -> no data
@@ -65,7 +66,20 @@ function Home(props) {
             return <div>no data</div>
         }
         if (type === 'image') {
-            return 'image';
+            const imageArr = post
+                .filter((item) => item.type === "image")
+                .map((image) => {
+                    return {
+                        src: image.url,
+                        user: image.user,
+                        caption: image.message,
+                        thumbnail: image.url,
+                        thumbnailWidth: 300,
+                        thumbnailHeight: 200
+                    };
+                });
+
+            return <PhotoGallery images={imageArr} />;
         } else if (type === 'video') {
             return 'video';
         }
