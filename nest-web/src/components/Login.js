@@ -27,8 +27,10 @@ function Login(props) {
 
         axios(opt)
             .then( res => {
-                const { data } = res; // get token
-                handleLoggedIn(data)
+                if (res.status === 200) {
+                    const {data} = res; // get token
+                    handleLoggedIn(data)
+                }
             })
             .catch( e => {
                 message.info(`Login failed ${e.message}`)

@@ -17,8 +17,10 @@ function App() {
 
     // save token to localStorage
     const loggedIn = token => {
-        localStorage.setItem(TOKEN_KEY,token);
-        setIsLoggedIn(true);
+        if (token) {
+            localStorage.setItem(TOKEN_KEY, token);
+            setIsLoggedIn(true);
+        }
     }
 
     return (
@@ -26,7 +28,7 @@ function App() {
             <TopBar isLoggedIn={isLoggedIn}
                     handleLogout={logout}/>
 
-            <Main handleLogin={loggedIn}
+            <Main handleLoggedIn={loggedIn}
                   isLoggedIn={isLoggedIn} />
         </div>
     );

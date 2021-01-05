@@ -10,7 +10,7 @@ function Main(props) {
     const showLogin = () => {
         // case 1: logged in
         // case 2: not logged in
-        return isLoggedIn ? <Redirect to="/home" /> : <Login handleLogin={handleLoggedIn}/>
+        return isLoggedIn ? <Redirect to="/home" /> : <Login handleLoggedIn={handleLoggedIn}/>
 
     }
 
