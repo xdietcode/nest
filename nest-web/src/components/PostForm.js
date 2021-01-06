@@ -18,7 +18,9 @@ export const PostForm = forwardRef( (props, formRef) => {
         return e && e.fileList;
     };
     return (
-        <Form name="validate_other" >
+        <Form name="validate_other"
+              ref={formRef}
+              {...formItemLayout}>
             <Form.Item
                 name="description"
                 label="Message"
