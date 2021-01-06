@@ -17,6 +17,22 @@ class PostButton extends Component {
 
     handleOk = () => {
         this.setState({visible: false})
+        // get form data
+        console.log("Post Form", this.postForm);
+        this.postForm.validateFields()
+            .then( form => {
+                console.log(form)
+                // step1: get info about message/image/video
+
+                // step2: check file type: image/video
+
+                // step3: prepare image/video data and send to server
+            })
+            .catch( e => {
+                console.log("uploading err -> ", e)
+            })
+
+
     }
 
     handleCancel = () => {
@@ -31,7 +47,7 @@ class PostButton extends Component {
                 <Button type="primary" onClick={this.showModal}>
                     Create New Post
                 </Button>
-                <Modal title="create-new-post"
+                <Modal title="Create New Post"
                        visible={visible}
                        onOk={this.handleOk}
                        onCancel={this.handleCancel}>
