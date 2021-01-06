@@ -13,4 +13,7 @@ Deployment: Docker, Google Cloud (Google App Engine)
 
  Demo
 ---
-It is a great experience of diving into Cloud based development using virtual machines. Even though the server application has been deployed to GAE, due to the concern of uncertain high costs of using Google Cloud, I decided to make a demo video to demonstrate the key features of this project.
+It is a great experience of diving into Cloud based development using virtual machines. Due to the concern of uncertain high costs of using Google Cloud, I decided to make a demo video to demonstrate the key features of this project before shutting down my App.
+
+Please click the following link to watch a demo
+
