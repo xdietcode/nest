@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import { Modal, Button } from 'antd';
+import { Modal, Button, message } from 'antd';
 import { PostForm } from "./PostForm";
+import axios from 'axios';
+import { BASE_URL, TOKEN_KEY } from "../constants";
 
 class PostButton extends Component {
     state = {
@@ -21,12 +23,39 @@ class PostButton extends Component {
         console.log("Post Form", this.postForm);
         this.postForm.validateFields()
             .then( form => {
-                console.log(form)
-                // step1: get info about message/image/video
+                const { description, uploadPost } = form;
+                const { type, originFileObj } = uploadPost[0];
+                const postType = type.match(/^(image|video)/g)[0];
+                if (postType) {
+                    let formData = new FormData();
+                    formData.append("message", description);
+                    formData.append("media_file", originFileObj);
 
-                // step2: check file type: image/video
+                    const opt = {
+                        method: "POST",
+                        url: `${BASE_URL}/upload`,
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY)}`
+                        },
+                        data: formData
+                    };
 
-                // step3: prepare image/video data and send to server
+                    axios(opt)
+                        .then((res) => {
+                            if (res.status === 200) {
+                                message.success("The image/video is uploaded!");
+                                this.postForm.resetFields();
+                                this.handleCancel();
+                                this.props.onShowPost(postType);
+                                this.setState({ confirmLoading: false });
+                            }
+                        })
+                        .catch((err) => {
+                            console.log("Upload image/video failed: ", err.message);
+                            message.error("Failed to upload image/video!");
+                            this.setState({ confirmLoading: false });
+                        });
+                }
             })
             .catch( e => {
                 console.log("uploading err -> ", e)
