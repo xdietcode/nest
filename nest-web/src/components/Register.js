@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Button, Input, message } from 'antd';
 import axios from 'axios';
 import { BASE_URL } from "../constants";
+import {Link} from "react-router-dom";
 
 const formItemLayout = {
     labelCol: {
@@ -124,6 +125,7 @@ function Register(props) {
                         className="register-btn">
                     Register
                 </Button>
+                Or <Link to="/login">Back to Login</Link>
             </Form.Item>
         </Form>
     );
