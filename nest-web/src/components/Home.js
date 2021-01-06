@@ -4,6 +4,7 @@ import {Tabs, message, Row, Col, Button} from 'antd';
 import {BASE_URL, SEARCH_KEY, TOKEN_KEY} from "../constants";
 import axios from 'axios';
 import PhotoGallery from "./PhotoGallery";
+import PostButton from "./PostButton";
 
 
 function Home(props) {
@@ -108,11 +109,13 @@ function Home(props) {
         setSearchOption( {type: type, keyword: keyword});
     }
 
+    const operations = <PostButton> Upload </PostButton>
     return (
         <div className="home">
             <SearchBar handleSearch={handleSearch}/>
             <div className="display">
-                <Tabs defaultActiveKey="image"
+                <Tabs tabBarExtraContent={operations}
+                    defaultActiveKey="image"
                       onChange={key => setActiveTab(key)}>
 
                     <TabPane tab="Image" key="image">
