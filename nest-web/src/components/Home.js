@@ -109,13 +109,24 @@ function Home(props) {
         setSearchOption( {type: type, keyword: keyword});
     }
 
-    const operations = <PostButton> Upload </PostButton>
+    // change tab according to upload file type image|video
+    const showPost = (type) => {
+        console.log("type -> ", type);
+        setActiveTab(type);
+
+        setTimeout(() => {
+            setSearchOption({ type: SEARCH_KEY.all, keyword: "" });
+        }, 3000);
+    };
+
+    const operations = <PostButton onShowPost={showPost}> Upload </PostButton>
     return (
         <div className="home">
             <SearchBar handleSearch={handleSearch}/>
             <div className="display">
                 <Tabs tabBarExtraContent={operations}
                     defaultActiveKey="image"
+                      activeKey={activeTab}
                       onChange={key => setActiveTab(key)}>
 
                     <TabPane tab="Image" key="image">
