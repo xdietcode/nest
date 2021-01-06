@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import SearchBar from "./SearchBar";
-import {Tabs, message} from 'antd';
+import {Tabs, message, Row, Col, Button} from 'antd';
 import {BASE_URL, SEARCH_KEY, TOKEN_KEY} from "../constants";
 import axios from 'axios';
 import PhotoGallery from "./PhotoGallery";
@@ -22,7 +22,7 @@ function Home(props) {
         const { type, keyword } = searchOption;
         fetchPost(searchOption);
         console.log("In effect", searchOption);
-    }, [searchOption]);
+    }, [searchOption]); // DidUpdate()
 
     const fetchPost = (option) => {
         const { type, keyword } = option;
@@ -81,13 +81,36 @@ function Home(props) {
 
             return <PhotoGallery images={imageArr} />;
         } else if (type === 'video') {
-            return 'video';
+            console.log(post.filter( item => item.type === 'video'))
+            return (
+                <Row>
+                    {
+                        post.filter( item => item.type === 'video' )
+                            .map( item => (
+                                    <Col span={8} key={item.url}>
+                                        <video src={item.url}
+                                                control={true}
+                                                className="video-block" />
+                                                <p> { item.user }: { item.message }</p>
+                                    </Col>
+
+                                )
+                            )
+                    }
+                </Row>
+            );
         }
     }
 
+    const handleSearch = (value) => {
+        console.log('home', value);
+        const { type, keyword } = value;
+        setSearchOption( {type: type, keyword: keyword});
+    }
+
     return (
-        <div>
-            <SearchBar/>
+        <div className="home">
+            <SearchBar handleSearch={handleSearch}/>
             <div className="display">
                 <Tabs defaultActiveKey="image"
                       onChange={key => setActiveTab(key)}>
