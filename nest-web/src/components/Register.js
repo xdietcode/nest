@@ -120,12 +120,15 @@ function Register(props) {
             </Form.Item>
 
             <Form.Item {...tailFormItemLayout}>
-                <Button type="primary"
+                <Button type="text"
                         htmlType="submit"
-                        className="register-btn">
+                        className="register-btn2">
                     Register
                 </Button>
-                Or <Link to="/login">Back to Login</Link>
+                <div>
+                     <Link className="back-to-login" to="/login">Back to Login</Link>
+                </div>
+
             </Form.Item>
         </Form>
     );
