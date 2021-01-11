@@ -8,7 +8,7 @@ The application was designed to be a single-page application to dynamically disp
 
 Front-End: React, JavaScript, HTML, CSS
 
-Back-End:  Go, ElasticSearch
+Back-End:  Go, Elasticsearch, GCS(Google Cloud Storage)
 
 Deployment: Docker, Google Cloud (Google App Engine)
 
