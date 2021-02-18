@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from "../assets/images/logo2.svg";
-import { LogoutOutlined } from "@ant-design/icons";
+
 
 function TopBar(props) {
     const { isLoggedIn, handleLogout } = props;
@@ -16,10 +16,10 @@ function TopBar(props) {
             {
                 isLoggedIn
                     ?
-                    <LogoutOutlined className="logout"
+                    <button type="button" className="logout"
                                     onClick={ () => { handleLogout();}
                                      }
-                    />
+                    >Log out</button>
                     :
                     null
             }
