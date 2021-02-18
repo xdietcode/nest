@@ -3,7 +3,7 @@
 <div align="center">
   <img align="center" src="https://github.com/xdietcode/nest/blob/img/nest-web/public/nest_login.png">
 </div>
-
+<br>
 <h2 align="center">About</h2>
 Nest+ is a Cloud based social network web application that allows users to create fun posts with photos. Users can choose to search by keyword or username to view posts. When user is logged in, the main page will display thumbnails of posts created by all users. Users can browse posts by clicking on the photos.
 
@@ -16,29 +16,32 @@ The application was designed to be a single-page application to dynamically disp
   <img align="center" src="https://github.com/xdietcode/nest/blob/img/nest-web/public/nest_post.png">
 </div>
 <br>
+<br>
 <p align="center">User can search post by username</p>
 <div align="center">
   <img align="center" src="https://github.com/xdietcode/nest/blob/img/nest-web/public/nest_user.png">
 </div>
 <br>
+<br>
 <p align="center">User can search post by keyword</p>
 <div align="center">
   <img align="center" src="https://github.com/xdietcode/nest/blob/img/nest-web/public/nest_keyword_.png">
 </div>
-
+<br>
+<br>
 
 <h2 align="center">Tech/Languages</h2>
 
-* Front-End: React, JavaScript, HTML, CSS
+Front-End: React, JavaScript, HTML, CSS
 
-* Back-End:  Go, ElasticSearch
+Back-End:  Go, Elasticsearch, GCS(Google Cloud Storage)
 
-* Deployment: Docker, Google Cloud (Google App Engine)
+Deployment: Docker, Google Cloud (Google App Engine)
 
 
- Demo
+<h3 align="center">Demo</h3>
 ---
-It is a great experience of diving into Cloud based development using virtual machines. Due to the concern of uncertain high costs of using Google Cloud, I decided to make a demo video to demonstrate the key features of this project before shutting down my App.
+Click here watch demo
 
-Please click the following link to watch a demo
+[Nest+](https://drive.google.com/file/d/1ExyaVeGTlA6ro7nXSnKco8GGXy8dAmAI/view?usp=sharing)
 
