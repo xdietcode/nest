@@ -49,6 +49,7 @@ Nest+ is a Cloud based social network web application that allows users to creat
 <h2 align="center">Tech/Languages</h2>
 
 <div align="center">
+  
 `React` `JavaScript` `HTML` `CSS`
 
 `Go` `Elasticsearch` `JWT` `GCS(Google Cloud Storage)`
