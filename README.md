@@ -8,8 +8,6 @@
 <h2 align="center">About</h2>
 Nest+ is a Cloud based social network web application that allows users to create fun posts with photos. Users can choose to search by keyword or username to view posts. When user is logged in, the main page will display thumbnails of posts created by all users. Users can browse posts by clicking on the photos.
 
-
-The application was designed to be a single-page application to dynamically display contents of data fetched from server without the need to reload the entire page. The front-end UI design was developed with React, JavaScript, HTML, CSS. The server functions were developed in Go and deployed to Google App Engine to handle client requests, store posts metadata using ElasticSearch, and perform token-based authentication using JWT.
 <br>
 <br>
 <br>
@@ -52,7 +50,7 @@ The application was designed to be a single-page application to dynamically disp
 
 Front-End: React, JavaScript, HTML, CSS
 
-Back-End:  Go, Elasticsearch, GCS(Google Cloud Storage)
+Back-End:  Go, Elasticsearch, JWT, GCS(Google Cloud Storage)
 
 Deployment: Docker, Google Cloud (Google App Engine)
 <br>
