@@ -48,11 +48,11 @@ Nest+ is a Cloud based social network web application that allows users to creat
 
 <h2 align="center">Tech/Languages</h2>
 
-Front-End: React, JavaScript, HTML, CSS
+`React` `JavaScript` `HTML` `CSS`
 
-Back-End:  Go, Elasticsearch, JWT, GCS(Google Cloud Storage)
+`Go` `Elasticsearch` `JWT` `GCS(Google Cloud Storage)`
 
-Deployment: Docker, Google Cloud (Google App Engine)
+`Docker` `Google App Engine`
 <br>
 <br>
 <br>
