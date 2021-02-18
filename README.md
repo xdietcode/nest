@@ -13,6 +13,20 @@ The application was designed to be a single-page application to dynamically disp
 <br>
 <h2 align="center">Features</h2>
 
+<p align="center">Register with safe check</p>
+<div align="center">
+  <img align="center" src="https://github.com/xdietcode/nest/blob/img/nest-web/public/nest_register.png">
+</div>
+<br>
+<br>
+
+<p align="center">Display photo gallery with overlay text</p>
+<div align="center">
+  <img align="center" src="https://github.com/xdietcode/nest/blob/img/nest-web/public/nest_overlay.png">
+</div>
+<br>
+<br>
+
 <p align="center">User can create post with media file</p>
 <div align="center">
   <img align="center" src="https://github.com/xdietcode/nest/blob/img/nest-web/public/nest_post.png">
